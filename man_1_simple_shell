@@ -1,0 +1,21 @@
+.TH SIMPLE_SHELL 1 2019-11-26 GNU SIMPLE SHELL "Simple Shell Programmer's Manual"
+.SH NAME
+.B simple_shell 
+- UNIX command line interpreter
+.SH SYNOPSIS
+.B Usage: simple_shell
+.PP
+.B [command] [argument[1]] [argument[2]]...
+.SH DESCRIPTION
+The simple_shell program is a UNIX command line interpreter that will display a prompt and waits for the user to input a command, which will always end with a new line.
+The prompt will be displayed each time a command has been executed, though if an executable is not found, an error message will be displayed before the prompt reappears.
+.PP
+.B Return Value
+.PP
+.SH EXAMPLE
+.PP
+.SH SEE ALSO
+.B sh(1)
+.PP
+.SH AUTHORS
+Kathleen Mckiernan & Kati Fredlund
