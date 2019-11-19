@@ -82,4 +82,4 @@ Simple\_shell will return the number of bytes read from standard inpout
 #### Authors
 [Kathleen McKiernan](https://github.com/KathleenRMcK) & [Kati Fredlund](https://github.com/KFredlund)
 
-##### A Kati(n<sup>2</sup>)\(e\) Project
+##### A Kati<sup>2</sup>\(e\) Project
