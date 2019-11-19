@@ -68,6 +68,8 @@ File | Description
 shell.c | Main function for simple shell
 \_getline.c | File for \_getline function
 \_strtok.c | File for \_strtok function
+allocation_help.c | File for memory allocation functions
+errorsandexits.c | File for error messages and exits
 holberton.h | Header file for project
 man\_1\_simple\_shell | simple\_shell manual page
 README.md | Project description and information
