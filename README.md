@@ -1,4 +1,4 @@
-#:shell: simple\_shell :shell:
+# :shell: simple\_shell :shell:
 ## UNIX command line interpreter
 
 ### **Usage**
@@ -82,4 +82,4 @@ Simple\_shell will return the number of bytes read from standard inpout
 #### Authors
 [Kathleen McKiernan](https://github.com/KathleenRMcK) & [Kati Fredlund](https://github.com/KFredlund)
 
-##### A Kati<sup>2</sup>\(e\) Project
+## A Kati<sup>2</sup>\(e\) Project
