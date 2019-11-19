@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # simple\_shell :shell:
 ## UNIX command line interpreter
 
@@ -45,3 +46,8 @@ Simple\_shell will return the number of bytes read from standard inpout
 
 #### Authors
 [Kathleen Mckienan](https://github.com/KathleenRMcK) & [Kati Fredlund](https://github.com/KFredlund)
+=======
+## Simple Shell! By team Katieeee
+
+This is a test
+>>>>>>> 193110c159e662ac349bcf98e3ec2639067d5fef
