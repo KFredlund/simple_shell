@@ -1,19 +1,18 @@
 /**
  * createstokens - passes input through strtok
- * @tokens: collected tokens
+ * @pathtokens: collected tokens
  * Return: Output of tokens
  */
 #include "holberton.h"
-char createstokens(char *token)
+char **createstokens(char *pathtokens)
 {
-	char *path = env("PATH");
+	/* tie in function for finding path here */
 
-	tokens = strtok(path, ":");
-	_puts_recursion(tokens);
+	pathtokens = strtok(pathtokens, ":");
+	_puts_recursion(pathtokens);
 
-	while (tokens = strtok(0, ":");
+	while (pathtokens = strtok(0, ":");
 		{
-	       _puts_recursion(tokens);
+	       _puts_recursion(pathtokens);
 		}
-	return (0);
 }
