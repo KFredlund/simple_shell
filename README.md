@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# simple\_shell :shell:
+#:shell: simple\_shell :shell:
 ## UNIX command line interpreter
 
 ### **Usage**
@@ -12,7 +11,7 @@
 
 File | Description
 -------|----------------------
-simple\_shell.c | Prints a prompt and waits for user to input a command and arguments, whichit reads, parses and then executes. 
+simple\_shell.c | Prints a prompt and waits for user to input a command and arguments, which it reads, parses and then executes. 
 
 ##### FILETYPE 1
 
@@ -65,9 +64,13 @@ helper\_functions | Misc. collection functions built in previous projects
 
 File | Description
 -------|----------------------
-holberton.h | header file
+shell.c | Main function for simple shell
+\_getline.c | File for \_getline function
+\_strtok.c | File for \_strtok function
+holberton.h | Header file for project
 man\_1\_simple\_shell | simple\_shell manual page
-README.md | project description
+README.md | Project description and information
+AUTHORS | File for creators of project
 
 
 #### Return value
@@ -77,9 +80,6 @@ Simple\_shell will return the number of bytes read from standard inpout
 
 
 #### Authors
-[Kathleen Mckienan](https://github.com/KathleenRMcK) & [Kati Fredlund](https://github.com/KFredlund)
-=======
-## Simple Shell! By team Katieeee
+[Kathleen McKiernan](https://github.com/KathleenRMcK) & [Kati Fredlund](https://github.com/KFredlund)
 
-This is a test
->>>>>>> 193110c159e662ac349bcf98e3ec2639067d5fef
+##### A Kati(n<sup>2</sup>)\(e\) Project
