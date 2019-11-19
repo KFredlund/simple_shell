@@ -1,4 +1,4 @@
-# :shell: simple\_shell :mermaid:
+# :shell: simple\_shell :shell:
 
 ## UNIX command line interpreter
 
