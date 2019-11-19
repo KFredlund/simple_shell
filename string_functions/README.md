@@ -1,0 +1,1 @@
+This directory contains all the necessary string functions from previous projects.
