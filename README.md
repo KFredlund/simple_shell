@@ -1,4 +1,4 @@
-# simple\_shell :shell:
+simple\_shell :shell:
 ## UNIX command line interpreter
 
 ### **Usage**
