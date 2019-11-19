@@ -1,4 +1,4 @@
-# :shell: simple\_shell :shell:
+# :shell: simple\_shell :mermaid:
 
 ## UNIX command line interpreter
 
@@ -70,6 +70,7 @@ shell.c | Main function for simple shell
 \_strtok.c | File for \_strtok function
 allocation_help.c | File for memory allocation functions
 errorsandexits.c | File for error messages and exits
+createstokens.c | File for handling token parsing
 holberton.h | Header file for project
 man\_1\_simple\_shell | simple\_shell manual page
 README.md | Project description and information
@@ -80,7 +81,13 @@ AUTHORS | File for creators of project
 Simple\_shell will return the number of bytes read from standard inpout
 
 #### Examples
+```
+$ cd		Output: Moved to $HOME
 
+$ pwd		Output: Name of current working directory
+
+$ exit		Output: root@ubuntu:/home/
+```
 
 #### Authors
 [Kathleen McKiernan](https://github.com/KathleenRMcK) & [Kati Fredlund](https://github.com/KFredlund)
