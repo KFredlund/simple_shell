@@ -8,7 +8,7 @@ int _strcmp(char *s1, char *s2);
 int main(void)
 {
 	char *buf, *line, *prompt = "Team Kati^2e Shell$ ";
-	char *ex = "exit\n";
+	char *token, *ex = "exit\n", *nl = "\n";
 	int input, status = 0;
 	size_t n;
 
@@ -28,13 +28,21 @@ int main(void)
 		}
 		else
 		{
-			printf("%s", buf);
+			token = strtok(buf, " ");
+			while (token)
+			{
+				write(1, token, strlen(token) + 1);
+				write(1, nl, strlen(nl) + 1);
+				token = strtok(NULL, " ");
+			}
 			status++;
 		}
 	}
+	free(buf);
+	free(token);
+//	for (i = 0, *token[i] != NULL; i++)
+//		free(*token[i]);
 	return (0);
-	//getline
-/* call to strtok function */
 	//execute args
 	// free line
 	// free args
