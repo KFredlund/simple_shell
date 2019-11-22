@@ -7,6 +7,7 @@
 int main(void)
 {
 	char *buf, *line, *prompt = "Team Kati^2e Shell$ ";
+	char *ex = "exit\n";
 	int input, status = 0;
 	size_t n;
 
@@ -20,13 +21,13 @@ int main(void)
 	{
 		write(1, prompt, strlen(prompt) + 1);
 		input = getline(&buf, &n, stdin);
-		if (*buf == 'e')
+		if (strcmp(buf, ex) == 0)
 		{
 			return (EXIT_SUCCESS);
 		}
 		else
 		{
-			printf("%s", buf);			
+			printf("%s", buf);
 			status++;
 		}
 	}
