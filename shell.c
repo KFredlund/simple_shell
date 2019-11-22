@@ -6,16 +6,29 @@
 */
 int main(void)
 {
-/* if buffer mallocs */
-	char *prompt = "Team Kati^2e Shell $";
-	int status = 0;
-	char *line[1000];
-	
-	while (status < 2)
+	char *buf, *line, *prompt = "Team Kati^2e Shell$ ";
+	int input, status = 0;
+	size_t n;
+
+	buf = malloc(sizeof(n + 1));
+	if (buf == NULL)
+	{
+		perror("Memory allocation fail\n");
+		exit(1);
+	}
+	while (status < '\n')
 	{
 		write(1, prompt, strlen(prompt) + 1);
-		read(0, line, 1000);	
-		status++;
+		input = getline(&buf, &n, stdin);
+		if (*buf == 'e')
+		{
+			return (EXIT_SUCCESS);
+		}
+		else
+		{
+			printf("%s", buf);			
+			status++;
+		}
 	}
 	return (0);
 	//getline
