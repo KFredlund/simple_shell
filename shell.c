@@ -1,5 +1,7 @@
 #include "holberton.h"
+#include <signal.h>
 int _strcmp(char *s1, char *s2);
+void cont_c_help();
 /**
 * main - Entry point, main function
 *
@@ -20,6 +22,7 @@ int main(void)
 	}
 	while (status < '\n')
 	{
+		signal(SIGINT, cont_c_help);
 		write(1, prompt, strlen(prompt) + 1);
 		input = getline(&buf, &n, stdin);
 		if (_strcmp(buf, ex) == 0)
@@ -29,7 +32,7 @@ int main(void)
 		else
 		{
 			token = strtok(buf, " ");
-			while (token)
+			while (token)			
 			{
 				write(1, token, strlen(token) + 1);
 				write(1, nl, strlen(nl) + 1);
@@ -48,12 +51,23 @@ int main(void)
 	// free args
 }
 /**
+ * cont_c_help
+ * 
+ * 
+ * Return: Never
+ */
+void cont_c_help()
+{
+	char *prompt2 = "\nTeam Kati^2e Shell$ ";
+
+	write(1, prompt2, strlen(prompt2) + 1);
+}
+/**
  * _strcmp - compares two strings
  * @s1: string one
  * @s2: string two
  * Return: Output
  */
-#include "holberton.h"
 int _strcmp(char *s1, char *s2)
 {
 	int l;
