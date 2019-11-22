@@ -1,6 +1,7 @@
-.TH SIMPLE_SHELL 1 2019-11-26 GNU SIMPLE SHELL "Simple Shell Programmer's Manual"
+.DD 2019-11-26
+.DT SIMPLE_SHELL 1 GNU SIMPLE SHELL "Simple Shell Programmer's Manual"
 .SH NAME
-.B simple_shell
+.NM Team Kati^2e simple_shell for HolbertonNHV
 - UNIX command line interpreter
 .SH SYNOPSIS
 .B Usage: simple_shell
@@ -244,6 +245,37 @@ This introduces words from the history list into the input stream, making it eas
 .PP
 .SH SHELL BUILTIN COMMANDS
 Most shell commands can work across various types of shells. For a complete list, the particular shell should be researched.
+alias - is defined by NAME=VALUE where name can be used to expand the value into an action.
+      unalias - is breaking the association of NAME with VALUE
+break - exits from for, while, until or select loop
+builtin - executes passed in arguments using specified shell builtins
+cd - changes the current directory. Without any called directory, cd brings the user to $HOME
+command - executes builtins or commands found in PATH
+echo - is output of args seperated by spaces and followed by a newline. Always returns a status of 0
+env - runs a program in a modified environment
+    setenv - sets a specific environment
+    unsetenv - unsets a specific environment
+exec - If command is specified, it replaces the shell
+exit - Causes shell to exit with a status of n. If no n, status of previous exit is used
+help - displays helpful information about builtin commands. If pattern is specified, help gives more detail
+history - displays the command history list with line numbers and denotes modified lines with a *
+kill - returns true if at least one signal was sent and error if false
+local - gives local variables a visible scope
+logout - exits a login shell
+printf - writes formatted arguments to standard outputunder the supervision of format
+pwd - prints the absolute path name of the current working directory, or CWD
+read - denotes a line read from the standard input
+return - causes a function to exit with a specific value
+set - sets shell variables to specific name
+    unset - unsets shell variables by their specific name
+suspend - temporarily suspends the shell's execution until it recieves a signal to continue
+test - returns a 1 or 0 depending on the conditional expression. Does not accept any options
+times - prints accumulated user and system times for shell and for processes run. Returns a status of 0
+trap - is a way for finding errors within using signal
+type - indicates how a name would be interpreted if used as name of command
+ulimit - provides control over processes started and resources available to the shell
+umask - user file-creation mask is set to to mode and is interpreted as a symbolic mode mask. If this begins with digit, it is seen as octal number.
+wait - waits for each specified process and returns its termination status
 .PP
 .SH SEE ALSO
 .B sh(1)
