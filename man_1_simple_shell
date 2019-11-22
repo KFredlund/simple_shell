@@ -1,6 +1,6 @@
 .TH SIMPLE_SHELL 1 2019-11-26 GNU SIMPLE SHELL "Simple Shell Programmer's Manual"
 .SH NAME
-.B simple_shell 
+.B simple_shell
 - UNIX command line interpreter
 .SH SYNOPSIS
 .B Usage: simple_shell
@@ -12,10 +12,245 @@ The prompt will be displayed each time a command has been executed, though if an
 .PP
 .B Return Value
 .PP
+.SH OPTIONS
+The shell can be paired with the following options:
+-c string
+Commands are read from string.
+-i
+Act as if shell had been invoked as a login shell
+-r
+The shell becomes restricted
+-s
+Commands are read from the standard input
+-D
+Printed list of double-quoted strings followed by $
+--
+A -- signals the end of options
+.PP
+.SH ARGUMENTS
+If no option is supplied, the shell reads and exicutes, then exits
+.PP
+.SH INVOCATION
+A login shell is where the first character of argument zero is a - or 1 started with --login option.
+An interactive shell is started without non option arguments
+.PP
 .SH EXAMPLE
+.PP
+.SH DEFINITIONS
+blank - A space or tab
+word - A sequence of characters considered single unit
+name - A word consisting of alphanumeric characters and underscores
+metacharacter - A character that unquoted separates words
+control operator - A token that can perform a control function
+.PP
+.SH RESERVED WORDS
+Reserved words are words with a special meaning to the shell.
+.PP
+.SH SHELL GRAMMAR
+.PP
+.SH	SIMPLE COMMANDS
+A simple command is a sequence of variable assignments followed by blank spaces and terminated by a control operator.
+.PP
+.SH	PIPLINES
+A pipeline is a series of commands seperated by | or |&
+.PP
+.SH	LISTS
+A group of pipeline sequences seperated by operators ;, &, && and iptionally terminated by ;, & or <newline>.
+.PP
+.SH	COMPOUND COMMANDS
+Compound commands can be executed in a subshell environment. Return status is exit status of list.
+.PP
+.SH	COPROCESSES
+A coprocess is executed asynchronously in a subshell as if the command had been terminated, with a two way pipe between the executing shell and coprocess.
+.PP
+.SH	SHELL FUNCTION DEFINITIONS
+An object called like a simple command and executes a command with new positional parameters.
+		function - defines name
+		Compound Commands - commands called on by name
+.PP
+.SH COMMENTS
+When a # is used, all remaining characters on that line are ignored. An interactive shell without interactive_comments does not allow comments without option enabled.
+.PP
+.SH QUOTING
+This is used to remove special meaning of certain special characters to the shell. There are three quoting options:
+- a non quoted backslash (\)
+- single quotes to preserve literal value
+- double quotes to preserve literal value except $, `, \, and !.
+.PP
+.SH PARAMETERS
+An entity that stores values such as a name, number or one of the special characters listed under SPECIAL PARAMETERS. A variable is a parameter denoted by a name.
+.PP
+.SH	POSITIONAL PARAMETERS
+A positional parameter is denoted by one or more digits other than 0. They are assigned form shell's arguments and may be reassigned using the set command.
+.PP
+.SH	SPECIAL PARAMETERS
+These can only be referenced, not assigned.
+* - expands to the positional parameters, starting from one and expand expands singly
+@ - expands to the positional parameters, starting from one and expand expands to single words
+# - expands number of positional parameters in decimal
+? - expands to exit status of most recently executed pipeline
+- - expands to current option flags specified on invocationby the set builtin command
+$ - expands to process ID of the shell
+! - expands to process ID of the mose recent executed background command
+0 - expands to name of shell
+_ - set to absolute pathname used to invoke shell script being used as passed in the environment or argument list
+.PP
+.SH	SHELL VARIABLES
+Variables set by the shell
+BASH - expands to full file name used to invoke this instance
+For a complete list, see SHELL VARIABLES
+.PP
+.SH ARRAYS
+One dimensional indexing. There is no maximum limit on size and no requirement of indexing or contiguous assignment.
+.PP
+.SH EXPANSION
+Performed on the command line after being parsed into words.
+.PP
+.SH	BRACE EXPANSION
+A mechanism by which arbitrary strings can be generated
+.PP
+.SH	TILDE EXPANSION
+A tilde-prefix treats following characters as a possible login name
+.PP
+.SH	PARAMETER AND VARIABLE EXPANSION
+The '$' character promotes parameter expansion, command substitution or arithmetic expansion.
+.PP
+.SH	COMMAND SUBSTITUTION
+Allows command output to replace command name
+.PP
+.SH	ARITHMETIC EXPANSION
+Allows the evaluation of possible arithmetic and the substitution of the result
+.PP
+.SH	PROCESS SUBSTITUTION
+Supported on systems that support named pipes or the /dev/fd method of naming open files
+.PP
+.SH	WORD SPLITTIN
+Parses through result, marking the sequences of <space> <tab> and <newline> while "" or '' are retained. If no expansion occurs, bo splitting occurs.
+.PP
+.SH	PATHNAME EXPANSION
+Scans each word for *, ?, and [. If one appears, the word is regarded as a pattern and replaced with the corresponding file name.
+.PP
+.SH   PATTERN MATCHING
+Any character appearing in a pattern not described below matches itself. NULL may not occur in a pattern.
+* - matches any string, including null string
+? - matches any single character
+[...] - matches any enclosed characters
+*() - matches zero or one occurence
++() - matches zero or more occurence
+@() - matches one or more occurence
+!() - matches one of given patterns
+.PP
+.SH   QUOTE REMOVAL
+All unquoted instances of \, single and double quotes that did not result from one of the above expansions are removed.
+.PP
+.SH REDIRECTION
+Changing input or output of an executing command
+.PP
+.SH ALIASES
+Allow strings to be substituted for a word when it is used as first word of simple command. The characters /, $, `, and = cannot appear in alias names. To remove the alias, use unalias.
+.PP
+.SH FUNCTIONS
+Defined under SHELL GRAMMAR, a function is a series of commands stored for later execution.
+.PP
+.SH ARITHMETIC EVALUATION
+Evaluation can be done in fixed width integers with no check for overflow. Division by 0 is flagged as an error.
+.PP
+.SH CONDITIONAL EXPRESSIONS
+Used by the [[ compound command and the test and [ built in commands, this tests file attributes and performs string and arithmetic comparisons. Primaries on files follow symbolic links and operate on target of the link.
+.PP
+.SH SIMPLE COMMAND EXPANSION
+    1. Words marked as variable assignments and redirections are saved for later processing.
+    2. Words not saved are expanded
+    3. Redirections are performed
+    4. Text after the = in variable assignment undergoes expansion, substitution and quote removal before being assigned
+.PP
+.SH COMMAND EXECUTION
+Functions and the PATH are parsed for the results of the shell command and optional arguments.
+.PP
+.SH COMMAND EXECUTION ENVIRONMENT
+The shell has an execution environment that can be manipulated by shell commands and â€¢ format.
+.PP
+.SH ENVIRONMENT
+An array of strings consisting of name-value pairs given when a program is invoked.
+.PP
+.SH EXIT STATUS
+The value of an executed command value returned by the waitpid system call or equivalent function.
+.PP
+.SH SIGNALS
+Helps with inherited values and checks for traps and non builtin commands run by signal handlers
+.PP
+.SH JOB CONTROL
+The ability to selectively stop, or suspend any execution of processes and continue, or resume their execution at a later point.
+.PP
+.SH PROMPTING
+When interactive, shell displays the primary prompt PS1 when it is ready to read a command and secondary PS2 when more input is needed to complete a command.
+.PP
+.SH READLINE
+\a - ASCII bell character
+\d - Date in WMD format
+\D{format}
+\e - ASCII escape character
+\h - Hostname up to first .
+\H - Hostname
+\j - Number of jobs currently managed
+\l - Basename of terminal device name
+\n - Newline
+\f - Carriage return
+\s - Name of the shell
+\t - Current time in 24 hour HMS format
+\T - Current time in 12 hour HMS format
+\@ - Current time in 12 hour am/pm format
+\A - Current time in 24 hour HM format
+\u - Username of current user
+\v - Version of shell
+\V - Release of shell
+\w - Current working directory
+\W - Basename of current working directory
+\! - History number of command
+\# - Command number of command
+\$ - If UID is O, a #, otherwise $
+\nnn - Character corresponding to octal number nnn
+\\ - Backslash
+\[ - Begin sequence of non printing characters
+\] - End sequence of non printing characters
+.PP
+.SH	READLINE NOTATION
+The library that handles reading input when using an interactive shell, unless --noediting is given at shell invocation.
+.PP
+.SH	READLINE INITIALIZATION
+Customized by putting commands in an initialization file.
+.PP
+.SH	READLINE KEY BINDINGS
+A key sequence bound to the name of a command or the text of a macro. Can be a symbolic key name or as a key sequence.
+.PP
+.SH	READLINE VARIABLES
+Variables that can be used to further customize its behavion.
+.PP
+.SH	READLINE CONDITIONAL CONSTRUCTS
+The $if construct allows bindings made based on editing mode, terminal used, or application through readline.
+$if, $endif, $else and $include.
+.PP
+.SH	SEARCHING
+Incremental and non incremental searching through the command history for lines containing specified strings.
+.PP
+.SH	READLINE COMMAND NAMES
+Command names without an accompanying key sequence is unbound by default. This covers commands for moving, manipulating the history, changing text, killing and yanking, numeric arguments, completing, keyboard macros, miscellaneous and programmable completion
+.PP
+.SH HISTORY
+A list of commands previously typed. This command history can be manipulated using the appropriate variables.
+.PP
+.SH HISTORY EXPANSION
+This introduces words from the history list into the input stream, making it easy to repeat commands, insert arguments or fix errors in previous commands. This relates with event designators, word designators and modifiers.
+.PP
+.SH SHELL BUILTIN COMMANDS
+Most shell commands can work across various types of shells. For a complete list, the particular shell should be researched.
 .PP
 .SH SEE ALSO
 .B sh(1)
 .PP
 .SH AUTHORS
-Kathleen Mckiernan & Kati Fredlund
+Kathleen McKiernan
+kathleen.mckiernan@holbertonschool.com
+
+Kati Fredlund
+kati.fredlund@holbertonschool.com
