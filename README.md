@@ -8,7 +8,7 @@
 ```
 
 ### Flowchart
-![flowchart image](simpleshell flowchary.pdf)
+![flowchart image](simpleshell_flowchart.pdf)
 
 ### Files
 
