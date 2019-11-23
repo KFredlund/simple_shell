@@ -2,7 +2,7 @@
 #include <signal.h>
 int _strcmp(char *s1, char *s2);
 void cont_c_help();
-int exec(char *args);
+int filter(char *token);
 /**
 * main - Entry point, main function
 *
@@ -33,7 +33,7 @@ int main(void)
 		else
 		{
 			token = strtok(buf, " ");
-			status = exec(token);
+			status = filter(token);
 /*			while (token)			
 			{
 				write(1, token, strlen(token) + 1);
@@ -82,7 +82,7 @@ int _strcmp(char *s1, char *s2)
 	return (s1[l] - s2[l]);
 }
 /**
- * exec - Execute command function
+ * filter - checks if command is a built in function
  * @args: arguments to execute
  * 
  * Return: number of args executed
@@ -99,22 +99,22 @@ int filter(char *token)
         builtin_list[4] = "setenv";
         builtin_list[5] = "unsetenv";
 
-	if (token[0] == NULL)
+	if (!token)
 		return (1);
 	for (; i < 6; i++)
 	{
-		if (_strcmp(token[0], builtin_list[i]))
+		if (_strcmp(token, builtin_list[i]))
 		{
 			switch_cmnd = i + 1;
 			break;
 		}
 	}
-	switch(switch_cmnd) 
+	switch(switch_cmnd)
 	{
 	case 1:
-		chdir(token[1]);
-		return (1);
-	case 2:
+		chdir("..");
+		return (0);
+/*	case 2:
 		helpfunc();
 		return (1);
 	case 3:
@@ -129,7 +129,7 @@ int filter(char *token)
 	case 6:
 		unsetenvironment();
 		return (1);
-	default:
+*/	default:
 		break;
 	}
 	return (0);
