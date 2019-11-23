@@ -7,18 +7,14 @@
  simple_shell [command] [argv[1]] [argv[2]]...
 ```
 
-### Files
+### Flowchart
+![flowchart image](simpleshell flowchary.pdf)
 
+### Files
 
 File | Description
 -------|----------------------
 simple\_shell.c | Prints a prompt and waits for user to input a command and arguments, which it reads, parses and then executes. 
-
-##### FILETYPE 1
-
-File | Description
--------|----------------------
-
 
 ##### Helper Functions
 
