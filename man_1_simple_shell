@@ -1,53 +1,56 @@
-.DD 2019-11-26
-.DT SIMPLE_SHELL 1 GNU SIMPLE SHELL "Simple Shell Programmer's Manual"
+.TH SIMPLE_SHELL 1 "2019 November 26" "v0.1" "Simple Shell Programmer's Manual"
 .SH NAME
 .NM Team Kati^2e simple_shell for HolbertonNHV
 - UNIX command line interpreter
 .SH SYNOPSIS
 .B Usage: simple_shell
-.PP
 .B [command] [argument[1]] [argument[2]]...
+.PP
 .SH DESCRIPTION
 The simple_shell program is a UNIX command line interpreter that will display a prompt and waits for the user to input a command, which will always end with a new line.
 The prompt will be displayed each time a command has been executed, though if an executable is not found, an error message will be displayed before the prompt reappears.
 .PP
-.B Return Value
-.PP
 .SH OPTIONS
 The shell can be paired with the following options:
--c string
+.SS -c string
 Commands are read from string.
--i
+.SS -i
 Act as if shell had been invoked as a login shell
--r
+.SS -r
 The shell becomes restricted
--s
+.SS -s
 Commands are read from the standard input
--D
+.SS -D
 Printed list of double-quoted strings followed by $
---
+.SS --
 A -- signals the end of options
 .PP
 .SH ARGUMENTS
-If no option is supplied, the shell reads and exicutes, then exits
+If no option is supplied, the shell reads and executes, then exits
 .PP
 .SH INVOCATION
 A login shell is where the first character of argument zero is a - or 1 started with --login option.
 An interactive shell is started without non option arguments
 .PP
 .SH EXAMPLE
+.SH cd:
+cd -> $HOME
+.SH env:
+env -> environment
+.SH exit:
+exit -> close shell
 .PP
 .SH DEFINITIONS
-blank - A space or tab
-word - A sequence of characters considered single unit
-name - A word consisting of alphanumeric characters and underscores
-metacharacter - A character that unquoted separates words
-control operator - A token that can perform a control function
+.SS blank - A space or tab
+.SS word - A sequence of characters considered single unit
+.SS name - A word consisting of alphanumeric characters and underscores
+.SS metacharacter - A character that unquoted separates words
+.SS control operator - A token that can perform a control function
 .PP
 .SH RESERVED WORDS
 Reserved words are words with a special meaning to the shell.
 .PP
-.SH SHELL GRAMMAR
+.SH - SHELL GRAMMAR -
 .PP
 .SH	SIMPLE COMMANDS
 A simple command is a sequence of variable assignments followed by blank spaces and terminated by a control operator.
@@ -66,17 +69,17 @@ A coprocess is executed asynchronously in a subshell as if the command had been 
 .PP
 .SH	SHELL FUNCTION DEFINITIONS
 An object called like a simple command and executes a command with new positional parameters.
-		function - defines name
-		Compound Commands - commands called on by name
+.SS		function - defines name
+.SS		Compound Commands - commands called on by name
 .PP
 .SH COMMENTS
 When a # is used, all remaining characters on that line are ignored. An interactive shell without interactive_comments does not allow comments without option enabled.
 .PP
 .SH QUOTING
 This is used to remove special meaning of certain special characters to the shell. There are three quoting options:
-- a non quoted backslash (\)
-- single quotes to preserve literal value
-- double quotes to preserve literal value except $, `, \, and !.
+.SS - a non quoted backslash (\\)
+.SS - single quotes to preserve literal value
+.SS - double quotes to preserve literal value except $, `, \\, and !.
 .PP
 .SH PARAMETERS
 An entity that stores values such as a name, number or one of the special characters listed under SPECIAL PARAMETERS. A variable is a parameter denoted by a name.
@@ -86,19 +89,19 @@ A positional parameter is denoted by one or more digits other than 0. They are a
 .PP
 .SH	SPECIAL PARAMETERS
 These can only be referenced, not assigned.
-* - expands to the positional parameters, starting from one and expand expands singly
-@ - expands to the positional parameters, starting from one and expand expands to single words
-# - expands number of positional parameters in decimal
-? - expands to exit status of most recently executed pipeline
-- - expands to current option flags specified on invocationby the set builtin command
-$ - expands to process ID of the shell
-! - expands to process ID of the mose recent executed background command
-0 - expands to name of shell
-_ - set to absolute pathname used to invoke shell script being used as passed in the environment or argument list
+.SS * - expands to the positional parameters, starting from one and expand expands singly
+.SS @ - expands to the positional parameters, starting from one and expand expands to single words
+.SS # - expands number of positional parameters in decimal
+.SS ? - expands to exit status of most recently executed pipeline
+.SS - - expands to current option flags specified on invocationby the set builtin command
+.SS $ - expands to process ID of the shell
+.SS ! - expands to process ID of the mose recent executed background command
+.SS 0 - expands to name of shell
+.SS _ - set to absolute pathname used to invoke shell script being used as passed in the environment or argument list
 .PP
 .SH	SHELL VARIABLES
 Variables set by the shell
-BASH - expands to full file name used to invoke this instance
+.SS BASH - expands to full file name used to invoke this instance
 For a complete list, see SHELL VARIABLES
 .PP
 .SH ARRAYS
@@ -125,21 +128,21 @@ Allows the evaluation of possible arithmetic and the substitution of the result
 .SH	PROCESS SUBSTITUTION
 Supported on systems that support named pipes or the /dev/fd method of naming open files
 .PP
-.SH	WORD SPLITTIN
-Parses through result, marking the sequences of <space> <tab> and <newline> while "" or '' are retained. If no expansion occurs, bo splitting occurs.
+.SH	WORD SPLITTING
+Parses through result, marking the sequences of <space> <tab> and <newline> while "" or '' are retained. If no expansion occurs, no splitting occurs.
 .PP
 .SH	PATHNAME EXPANSION
 Scans each word for *, ?, and [. If one appears, the word is regarded as a pattern and replaced with the corresponding file name.
 .PP
 .SH   PATTERN MATCHING
 Any character appearing in a pattern not described below matches itself. NULL may not occur in a pattern.
-* - matches any string, including null string
-? - matches any single character
-[...] - matches any enclosed characters
-*() - matches zero or one occurence
-+() - matches zero or more occurence
-@() - matches one or more occurence
-!() - matches one of given patterns
+.SS * - matches any string, including null string
+.SS ? - matches any single character
+.SS [...] - matches any enclosed characters
+.SS *() - matches zero or one occurence
+.SS +() - matches zero or more occurence
+.SS @() - matches one or more occurence
+.SS !() - matches one of given patterns
 .PP
 .SH   QUOTE REMOVAL
 All unquoted instances of \, single and double quotes that did not result from one of the above expansions are removed.
@@ -160,10 +163,10 @@ Evaluation can be done in fixed width integers with no check for overflow. Divis
 Used by the [[ compound command and the test and [ built in commands, this tests file attributes and performs string and arithmetic comparisons. Primaries on files follow symbolic links and operate on target of the link.
 .PP
 .SH SIMPLE COMMAND EXPANSION
-    1. Words marked as variable assignments and redirections are saved for later processing.
-    2. Words not saved are expanded
-    3. Redirections are performed
-    4. Text after the = in variable assignment undergoes expansion, substitution and quote removal before being assigned
+.SS    1. Words marked as variable assignments and redirections are saved for later processing.
+.SS    2. Words not saved are expanded
+.SS    3. Redirections are performed
+.SS    4. Text after the = in variable assignment undergoes expansion, substitution and quote removal before being assigned
 .PP
 .SH COMMAND EXECUTION
 Functions and the PATH are parsed for the results of the shell command and optional arguments.
@@ -187,33 +190,33 @@ The ability to selectively stop, or suspend any execution of processes and conti
 When interactive, shell displays the primary prompt PS1 when it is ready to read a command and secondary PS2 when more input is needed to complete a command.
 .PP
 .SH READLINE
-\a - ASCII bell character
-\d - Date in WMD format
-\D{format}
-\e - ASCII escape character
-\h - Hostname up to first .
-\H - Hostname
-\j - Number of jobs currently managed
-\l - Basename of terminal device name
-\n - Newline
-\f - Carriage return
-\s - Name of the shell
-\t - Current time in 24 hour HMS format
-\T - Current time in 12 hour HMS format
-\@ - Current time in 12 hour am/pm format
-\A - Current time in 24 hour HM format
-\u - Username of current user
-\v - Version of shell
-\V - Release of shell
-\w - Current working directory
-\W - Basename of current working directory
-\! - History number of command
-\# - Command number of command
-\$ - If UID is O, a #, otherwise $
-\nnn - Character corresponding to octal number nnn
-\\ - Backslash
-\[ - Begin sequence of non printing characters
-\] - End sequence of non printing characters
+.SS \\a - ASCII bell character
+.SS \\d - Date in WMD format
+.SS \\D{format}
+.SS \\e - ASCII escape character
+.SS \\h - Hostname up to first .
+.SS \\H - Hostname
+.SS \\j - Number of jobs currently managed
+.SS \\l - Basename of terminal device name
+.SS \\n - Newline
+.SS \\f - Carriage return
+.SS \\s - Name of the shell
+.SS \\t - Current time in 24 hour HMS format
+.SS \\T - Current time in 12 hour HMS format
+.SS \\@ - Current time in 12 hour am/pm format
+.SS \\A - Current time in 24 hour HM format
+.SS \\u - Username of current user
+.SS \\v - Version of shell
+.SS \\V - Release of shell
+.SS \\w - Current working directory
+.SS \\W - Basename of current working directory
+.SS \\! - History number of command
+.SS \\# - Command number of command
+.SS \\$ - If UID is O, a #, otherwise $
+.SS \\nnn - Character corresponding to octal number nnn
+.SS \\ - Backslash
+.SS \\[ - Begin sequence of non printing characters
+.SS \\] - End sequence of non printing characters
 .PP
 .SH	READLINE NOTATION
 The library that handles reading input when using an interactive shell, unless --noediting is given at shell invocation.
@@ -229,7 +232,7 @@ Variables that can be used to further customize its behavion.
 .PP
 .SH	READLINE CONDITIONAL CONSTRUCTS
 The $if construct allows bindings made based on editing mode, terminal used, or application through readline.
-$if, $endif, $else and $include.
+.SS $if, $endif, $else and $include.
 .PP
 .SH	SEARCHING
 Incremental and non incremental searching through the command history for lines containing specified strings.
@@ -245,44 +248,45 @@ This introduces words from the history list into the input stream, making it eas
 .PP
 .SH SHELL BUILTIN COMMANDS
 Most shell commands can work across various types of shells. For a complete list, the particular shell should be researched.
-alias - is defined by NAME=VALUE where name can be used to expand the value into an action.
+.SS alias - is defined by NAME=VALUE where name can be used to expand the value into an action.
       unalias - is breaking the association of NAME with VALUE
-break - exits from for, while, until or select loop
-builtin - executes passed in arguments using specified shell builtins
-cd - changes the current directory. Without any called directory, cd brings the user to $HOME
-command - executes builtins or commands found in PATH
-echo - is output of args seperated by spaces and followed by a newline. Always returns a status of 0
-env - runs a program in a modified environment
-    setenv - sets a specific environment
-    unsetenv - unsets a specific environment
-exec - If command is specified, it replaces the shell
-exit - Causes shell to exit with a status of n. If no n, status of previous exit is used
-help - displays helpful information about builtin commands. If pattern is specified, help gives more detail
-history - displays the command history list with line numbers and denotes modified lines with a *
-kill - returns true if at least one signal was sent and error if false
-local - gives local variables a visible scope
-logout - exits a login shell
-printf - writes formatted arguments to standard outputunder the supervision of format
-pwd - prints the absolute path name of the current working directory, or CWD
-read - denotes a line read from the standard input
-return - causes a function to exit with a specific value
-set - sets shell variables to specific name
-    unset - unsets shell variables by their specific name
-suspend - temporarily suspends the shell's execution until it recieves a signal to continue
-test - returns a 1 or 0 depending on the conditional expression. Does not accept any options
-times - prints accumulated user and system times for shell and for processes run. Returns a status of 0
-trap - is a way for finding errors within using signal
-type - indicates how a name would be interpreted if used as name of command
-ulimit - provides control over processes started and resources available to the shell
-umask - user file-creation mask is set to to mode and is interpreted as a symbolic mode mask. If this begins with digit, it is seen as octal number.
-wait - waits for each specified process and returns its termination status
+.SS break - exits from for, while, until or select loop
+.SS builtin - executes passed in arguments using specified shell builtins
+.SS cd - changes the current directory. Without any called directory, cd brings the user to $HOME
+.SS command - executes builtins or commands found in PATH
+.SS echo - is output of args seperated by spaces and followed by a newline. Always returns a status of 0
+.SS env - runs a program in a modified environment
+.SS    setenv - sets a specific environment
+.SS    unsetenv - unsets a specific environment
+.SS exec - If command is specified, it replaces the shell
+.SS exit - Causes shell to exit with a status of n. If no n, status of previous exit is used
+.SS help - displays helpful information about builtin commands. If pattern is specified, help gives more detail
+.SS history - displays the command history list with line numbers and denotes modified lines with a *
+.SS kill - returns true if at least one signal was sent and error if false
+.SS local - gives local variables a visible scope
+.SS logout - exits a login shell
+.SS printf - writes formatted arguments to standard outputunder the supervision of format
+.SS pwd - prints the absolute path name of the current working directory, or CWD
+.SS read - denotes a line read from the standard input
+.SS return - causes a function to exit with a specific value
+.SS set - sets shell variables to specific name
+.SS    unset - unsets shell variables by their specific name
+.SS suspend - temporarily suspends the shell's execution until it recieves a signal to continue
+.SS test - returns a 1 or 0 depending on the conditional expression. Does not accept any options
+.SS times - prints accumulated user and system times for shell and for processes run. Returns a status of 0
+.SS trap - is a way for finding errors within using signal
+.SS type - indicates how a name would be interpreted if used as name of command
+.SS ulimit - provides control over processes started and resources available to the shell
+.SS umask - user file-creation mask is set to to mode and is interpreted as a symbolic mode mask. If this begins with digit, it is seen as octal number.
+.SS wait - waits for each specified process and returns its termination status
 .PP
 .SH SEE ALSO
 .B sh(1)
 .PP
 .SH AUTHORS
-Kathleen McKiernan
-kathleen.mckiernan@holbertonschool.com
-
-Kati Fredlund
-kati.fredlund@holbertonschool.com
+.PP
+.SS Kathleen McKiernan
+.SS kathleen.mckiernan@holbertonschool.com
+.PP
+.SS Kati Fredlund
+.SS kati.fredlund@holbertonschool.com
