@@ -26,6 +26,11 @@ int main(void)
 		signal(SIGINT, cont_c_help);
 		write(1, prompt, strlen(prompt) + 1);
 		input = getline(&buf, &n, stdin);
+		if (input == EOF)
+		{
+			write(1, "\n", 4);
+			exit(1);
+		}
 		if (_strcmp(buf, ex) == 0)
 		{
 			return (EXIT_SUCCESS);
@@ -33,6 +38,7 @@ int main(void)
 		else
 		{
 			token = strtok(buf, " ");
+			printf("while loop, else statement before status = filter\n");
 			status = filter(token);
 /*			while (token)			
 			{
@@ -43,6 +49,7 @@ int main(void)
 			status++;
 */		}
 	}
+	printf("should print last\n");
 	free(buf);
 	free(token);
 //	for (i = 0, *token[i] != NULL; i++)
@@ -89,31 +96,46 @@ int _strcmp(char *s1, char *s2)
  */
 int filter(char *token)
 {
-	int i = 0, switch_cmnd = 0;
+	int switch_cmnd = 0;
+	size_t i = 0;
 	char *builtin_list[6];
 
-        builtin_list[0] = "cd";
-        builtin_list[1] = "help";
-        builtin_list[2] = "history";
-        builtin_list[3] = "env";
-        builtin_list[4] = "setenv";
-        builtin_list[5] = "unsetenv";
+	builtin_list[0] = "cd";
+	builtin_list[1] = "help";
+	builtin_list[2] = "history";
+	builtin_list[3] = "env";
+	builtin_list[4] = "setenv";
+	builtin_list[5] = "unsetenv";
 
+	printf("filter func top\n");
 	if (!token)
+	{
+		printf("not token error return\n");
 		return (1);
-	for (; i < 6; i++)
-	{
-		if (_strcmp(token, builtin_list[i]))
-		{
-			switch_cmnd = i + 1;
-			break;
-		}
 	}
-	switch(switch_cmnd)
+	else
 	{
-	case 1:
-		chdir("..");
-		return (0);
+		printf("top of for loop for builtin check\n");
+		for (; i < sizeof(builtin_list); i++)
+		{
+			printf("%lu = i loop\n", i);
+			printf("builtin_list [i] = %s\n", builtin_list[i]);
+			if (_strcmp(token, builtin_list[i]))
+			{
+				printf("inside built in check loop!!!\n");
+				printf("switch cmnd before = %d\n", switch_cmnd);
+				printf("*builtin_list[i] = %d\n", *builtin_list[i]);
+				switch_cmnd = *builtin_list[i];
+				printf("switch cmnd after = %d\n", switch_cmnd);
+				break;
+			}
+		}
+		switch(switch_cmnd)
+		{
+			case 1:
+				printf("chdir switch case\n");
+				chdir("..");
+				return (0);
 /*	case 2:
 		helpfunc();
 		return (1);
@@ -129,8 +151,10 @@ int filter(char *token)
 	case 6:
 		unsetenvironment();
 		return (1);
-*/	default:
-		break;
-	}
+*/			default:
+				printf("default switch cmnd\n");
+				break;
+		}
 	return (0);
+	}
 }
