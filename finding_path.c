@@ -1,3 +1,19 @@
+#include "holberton.h"
+/**
+ * grabpath - put path into double pointer
+ * Return: double pointer
+ */
+char **grabpath()
+{
+	char **grab = NULL;
+	char *input = NULL;
+
+	input = _getenv("PATH");
+	grab = strtok(input, ":");
+	buffer(0, input);
+	return (grab);
+}
+
 /**
  * find_path - helps find locations along PATH
  * @path: Path being parsed through

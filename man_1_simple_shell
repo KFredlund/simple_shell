@@ -33,10 +33,14 @@ A login shell is where the first character of argument zero is a - or 1 started 
 An interactive shell is started without non option arguments
 .PP
 .SH EXAMPLE
+.SH: ls:
+ls -> lists all files/directories in CWD
+.SH pwd:
+pwd -> prints name of current working directory
 .SH cd:
-cd -> $HOME
+cd -> brings user to $HOME
 .SH env:
-env -> environment
+env -> shows environment
 .SH exit:
 exit -> close shell
 .PP
@@ -290,3 +294,5 @@ Most shell commands can work across various types of shells. For a complete list
 .PP
 .SS Kati Fredlund
 .SS kati.fredlund@holbertonschool.com
+.PP
+.SS Project for Holberton School NHV

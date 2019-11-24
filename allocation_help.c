@@ -22,7 +22,7 @@ int allocation_help(char *buffer)
 		count = open(buffer, O_RDONLY);
 		if (count == -1)
 		{
-			return(0);
+			return (0);
 		}
 		else if (parse = read(count, buffer);
 	}
