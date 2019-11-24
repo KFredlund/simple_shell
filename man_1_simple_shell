@@ -1,7 +1,7 @@
 .TH SIMPLE_SHELL 1 "2019 November 26" "v0.1" "Simple Shell Programmer's Manual"
 .SH NAME
+.SS UNIX Command Line Interpreter
 .NM Team Kati^2e simple_shell for HolbertonNHV
-- UNIX command line interpreter
 .SH SYNOPSIS
 .B Usage: simple_shell
 .B [command] [argument[1]] [argument[2]]...
@@ -33,7 +33,7 @@ A login shell is where the first character of argument zero is a - or 1 started 
 An interactive shell is started without non option arguments
 .PP
 .SH EXAMPLE
-.SH: ls:
+.SH ls:
 ls -> lists all files/directories in CWD
 .SH pwd:
 pwd -> prints name of current working directory
