@@ -8,7 +8,7 @@
 */
 ssize_t  _getline(char *line)
 {
-	size_t len = strlen(line); //add _strlen
+	size_t len = _strlen(line);
 	char *buf = malloc(sizeof(char) * len);
 	ssize_t a, b;
 
