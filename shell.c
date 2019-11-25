@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <signal.h>
 int _strcmp(char *s1, char *s2);
 void cont_c_help();
 int filter(char *token);
@@ -38,31 +37,17 @@ int main(void)
 		else
 		{
 			token = strtok(buf, " ");
-			printf("while loop, else statement before status = filter\n");
 			status = filter(token);
-/*			while (token)			
-			{
-				write(1, token, strlen(token) + 1);
-				write(1, nl, strlen(nl) + 1);
-				token = strtok(NULL, " ");
-			}
 			status++;
-*/		}
+		}
 	}
-	printf("should print last\n");
 	free(buf);
 	free(token);
-//	for (i = 0, *token[i] != NULL; i++)
-//		free(*token[i]);
 	return (0);
-	//execute args
-	// free line
-	// free args
 }
 /**
- * cont_c_help
- * 
- * 
+ * cont_c_help - Function that exits a program with C^c signal
+ *
  * Return: Never
  */
 void cont_c_help()
@@ -90,12 +75,13 @@ int _strcmp(char *s1, char *s2)
 }
 /**
  * filter - checks if command is a built in function
- * @args: arguments to execute
- * 
+ * @token: arguments to execute
+ *
  * Return: number of args executed
  */
 int filter(char *token)
 {
+	char *cd_str, *help_str, *history_str, *env_str, *setenv_str, *unsetenv_str;
 	int switch_cmnd = 0;
 	size_t i = 0;
 	char *builtin_list[6];
@@ -106,55 +92,59 @@ int filter(char *token)
 	builtin_list[3] = "env";
 	builtin_list[4] = "setenv";
 	builtin_list[5] = "unsetenv";
-
-	printf("filter func top\n");
 	if (!token)
 	{
-		printf("not token error return\n");
 		return (1);
 	}
 	else
 	{
-		printf("top of for loop for builtin check\n");
 		for (; i < sizeof(builtin_list); i++)
 		{
 			printf("%lu = i loop\n", i);
-			printf("builtin_list [i] = %s\n", builtin_list[i]);
 			if (_strcmp(token, builtin_list[i]))
 			{
 				printf("inside built in check loop!!!\n");
 				printf("switch cmnd before = %d\n", switch_cmnd);
 				printf("*builtin_list[i] = %d\n", *builtin_list[i]);
-				switch_cmnd = *builtin_list[i];
-				printf("switch cmnd after = %d\n", switch_cmnd);
-				break;
+				printf("*builtin_list = %s\n", *builtin_list);
+				printf("builtin_list = %p\n", builtin_list);
+				printf("builtin_list[i] = %s\n", builtin_list[i]);
+				if (_strcmp(token, cd_str))
+					switch_cmnd = *builtin_list[0];
+				else
+				{
+					printf("switch cmnd after = %d\n", switch_cmnd);
+					break;
+				}
 			}
+			switch (switch_cmnd)
+			{
+				case 1:
+					printf("chdir switch case\n");
+					chdir("..");
+					return (0);
+/*
+*	case 2:
+*		helpfunc();
+*		return (1);
+*	case 3:
+*		histfunc();
+*		return (1);
+*	case 4:
+*		environment();
+*		return (1);
+*	case 5:
+*		setenvironment();
+*		return (1);
+*	case 6:
+*		unsetenvironment();
+*		return (1);
+*/
+				default:
+					printf("default switch cmnd\n");
+					break;
+			}
+		return (0);
 		}
-		switch(switch_cmnd)
-		{
-			case 1:
-				printf("chdir switch case\n");
-				chdir("..");
-				return (0);
-/*	case 2:
-		helpfunc();
-		return (1);
-	case 3:
-		histfunc();
-		return (1);
-	case 4:
-		environment();
-		return (1);
-	case 5:
-		setenvironment();
-		return (1);
-	case 6:
-		unsetenvironment();
-		return (1);
-*/			default:
-				printf("default switch cmnd\n");
-				break;
-		}
-	return (0);
 	}
 }
