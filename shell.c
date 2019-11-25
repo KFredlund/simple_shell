@@ -4,15 +4,15 @@ void cont_c_help(int i) __attribute__((unused));
 int filter(char *token);
 /**
 * main - Entry point, main function
-*
 * Return: 0 if success, else 1
 */
-int main(void)
+int main(char **env)
 {
 	char *buf, *line, *prompt = "$ ";
-	char *token, *ex = "exit\n", *nl = "\n";
+	char *token,/* *ex = "exit\n",*/ *nl = "\n";
 	int input, status = 0;
 	size_t n;
+	char **path;
 
 	buf = malloc(sizeof(n + 1));
 	if (buf == NULL)
@@ -30,19 +30,17 @@ int main(void)
 			write(1, "\n", 4);
 			exit(1);
 		}
-		if (_strcmp(buf, ex) == 0)
-		{
-			return (EXIT_SUCCESS);
+		token = strtok(buf, " ");
+		status = filter(token);
+//		if (filter == 1)
+//		{
+//			path = getpath(env);
+//			childandparent(path, token);
 		}
-		else
-		{
-			token = strtok(buf, " ");
-			status = filter(token);
-			status++;
-		}
-	}
-	free(buf);
-	free(token);
+		status++;
+//	free(buf);
+//	free(token);
+//	free(*path);
 	return (0);
 }
 /**
@@ -81,57 +79,46 @@ int _strcmp(char *s1, char *s2)
  */
 int filter(char *token)
 {
-	char *cd_str, *help_str, *history_str, *env_str, *setenv_str, *unsetenv_str;
+//	char *help_str, *history_str, *env_str, *setenv_str, *unsetenv_str;
 	int switch_cmnd = 0;
 	size_t i = 0;
 	char *builtin_list[6];
 
-	builtin_list[0] = "cd";
-	builtin_list[1] = "help";
-	builtin_list[2] = "history";
-	builtin_list[3] = "env";
-	builtin_list[4] = "setenv";
-	builtin_list[5] = "unsetenv";
+	builtin_list[0] = "cd\n";
+	builtin_list[1] = "help\n";
+	builtin_list[2] = "exit\n";
+	builtin_list[3] = "env\n";
+	builtin_list[4] = "setenv\n";
+	builtin_list[5] = "unsetenv\n";
 	if (!token)
 	{
 		return (1);
 	}
 	else
 	{
-		for (; i < sizeof(builtin_list); i++)
+		for (; i < 7; i++)
 		{
-			printf("%lu = i loop\n", i);
-			if (_strcmp(token, builtin_list[i]))
+			if (_strcmp(token, builtin_list[i]) == 0)
 			{
-				printf("inside built in check loop!!!\n");
-				printf("switch cmnd before = %d\n", switch_cmnd);
-				printf("*builtin_list[i] = %d\n", *builtin_list[i]);
-				printf("*builtin_list = %s\n", *builtin_list);
-				printf("builtin_list = %p\n", builtin_list);
-				printf("builtin_list[i] = %s\n", builtin_list[i]);
-				if (_strcmp(token, cd_str))
-					switch_cmnd = *builtin_list[0];
-				else
-				{
-					printf("switch cmnd after = %d\n", switch_cmnd);
-					break;
-				}
+				switch_cmnd = i + 1;
 			}
-			switch (switch_cmnd)
-			{
-				case 1:
-					printf("chdir switch case\n");
-					chdir("..");
-					return (0);
+		}	
+		switch (switch_cmnd)
+		{
+			case 1:
+				printf("chdir switch case\n");
+				chdir("..");
+				return (0);
+
+			case 2:
+				printf("help function\n");
+			//	helpfunc();
+				return (0);
+			case 3:
+                        	exit(0);
 /*
-*	case 2:
-*		helpfunc();
-*		return (1);
-*	case 3:
-*		histfunc();
-*		return (1);
 *	case 4:
-*		environment();
+*		env();
 *		return (1);
 *	case 5:
 *		setenvironment();
@@ -140,11 +127,10 @@ int filter(char *token)
 *		unsetenvironment();
 *		return (1);
 */
-				default:
-					printf("default switch cmnd\n");
-					break;
-			}
-		return (0);
+			default:
+				perror("Command Not Found");
+				break;
 		}
+	return (0);
 	}
 }
