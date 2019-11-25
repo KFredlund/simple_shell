@@ -11,15 +11,15 @@ int main(char **env)
 	char *buf, *line, *prompt = "$ ";
 	char *token,/* *ex = "exit\n",*/ *nl = "\n";
 	int input, status = 0;
-	size_t n;
+	size_t n = 0;
 	char **path;
 
-	buf = malloc(sizeof(n + 1));
-	if (buf == NULL)
+	buf = NULL;  // malloc(sizeof(n + 1));
+/*	if (buf == NULL)
 	{
 		perror("Memory allocation fail\n");
 		exit(1);
-	}
+	} */
 	while (status < '\n')
 	{
 		signal(SIGINT, cont_c_help);
@@ -36,10 +36,11 @@ int main(char **env)
 //		{
 //			path = getpath(env);
 //			childandparent(path, token);
-		}
+//		}
+	}
 		status++;
-//	free(buf);
-//	free(token);
+	free(buf);
+	free(token);
 //	free(*path);
 	return (0);
 }
@@ -79,54 +80,39 @@ int _strcmp(char *s1, char *s2)
  */
 int filter(char *token)
 {
-//	char *help_str, *history_str, *env_str, *setenv_str, *unsetenv_str;
 	int switch_cmnd = 0;
 	size_t i = 0;
-	char *builtin_list[6];
+	char *home = "/home", *builtin_list[6];
 
 	builtin_list[0] = "cd\n";
 	builtin_list[1] = "help\n";
 	builtin_list[2] = "exit\n";
 	builtin_list[3] = "env\n";
-	builtin_list[4] = "setenv\n";
-	builtin_list[5] = "unsetenv\n";
 	if (!token)
-	{
 		return (1);
-	}
 	else
 	{
-		for (; i < 7; i++)
+		for (; i < 4; i++)
 		{
 			if (_strcmp(token, builtin_list[i]) == 0)
-			{
-				switch_cmnd = i + 1;
-			}
-		}	
+				switch_cmnd = i + 1;	
+		}
 		switch (switch_cmnd)
 		{
 			case 1:
 				printf("chdir switch case\n");
-				chdir("..");
+				chdir(home);
 				return (0);
 
 			case 2:
-				printf("help function\n");
-			//	helpfunc();
+				helpfunc;
 				return (0);
 			case 3:
                         	exit(0);
-/*
-*	case 4:
-*		env();
-*		return (1);
-*	case 5:
-*		setenvironment();
-*		return (1);
-*	case 6:
-*		unsetenvironment();
-*		return (1);
-*/
+
+			case 4:
+				printf("env function\n");
+				return (0);
 			default:
 				perror("Command Not Found");
 				break;
