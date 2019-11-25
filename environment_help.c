@@ -1,66 +1,44 @@
 #include "holberton.h"
 /**
- * environment_help - set and unset environment
- * @setenv: Environment to be set
- * @unsetenv: Environment to be unset
- * Return: Set/unset environment
- */
-char environment_help(char *setenv, char *unsetenv)
-{
-	int i = 0;
-
-	while (setenv = 2)
-	{
-
-	}
-	else
-	write("Error: Cannot set environment\n");
-		return (1);
-
-	while (unsetenv = 1)
-	{
-
-	}
-	else
-	write("Error: Cannot unset environment\n");
-		return (1);
-}
-/**
- * _getenv - searches for a specific environment variable
- * @name: variables being searched for
- * @reject: variables being rremoved
+ * getenv - searches PATH for environment
+ * @name: things it could be
+ * @find: things it is
  * Return: Output
  */
-char **_getenv(const char *name, char *reject)
+char **getenv(const char *name, char **find)
 {
-	list_s *environment;
+	char **environ;
+	char *env = *environ[name];
 	char *grab = NULL;
 	int gogetter = 0;
 	int a = 0, b = 0;
 
-	if (!environment)
+//? grab
+	find = strtok(name, ":");
+	return (find);
+
+	if (!env)
 	{
-		environment = (malloc(sizeof(char)) * (_strlen((char **)name)));
 		return (NULL);
 	}
 	if (name)
 	{
-		add_node_end(&environment, name);
+		add_node_end(&env, name);
 	}
-	if (reject)
+	if (find)
 	{
-		gogetter = _strlen(environment);
+		gogetter = getpath(env);
 		while (a < gogetter)
 		{
 			a++;
-			grab = add_node(environment, a)->ptr;
-			while (name && reject != '=')
+			grab = add_node(env, a)->ptr;
+			while (name && find != '=')
 			{
-				if (reject != grab)
+				if (find != grab)
 					break;
 				b++;
 			}
 		}
 	}
-	return ((environment));
+	return (env);
 }
