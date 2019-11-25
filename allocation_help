@@ -1,21 +1,18 @@
+#include "holberton.h"
 /**
  * allocation_help - memory allocation helper
  * @buffer: memory allocated here
  * Return: Free on success
  */
-#include "holberton.h"
 int allocation_help(char *buffer)
 {
 	int buffsize = LSH_RL_BUFSIZE;
 	int location = 0, count = 0, parse;
 
 	buffer = malloc(sizeof(char) * buffsize);
-
 /* checking if buffer allocates desired memory */
 	if (!buffer)
-	{
 		bufferror();
-	}
 /* loop while not exit */
 	while (count)
 	{
@@ -32,9 +29,7 @@ int allocation_help(char *buffer)
 		buffsize += LSH_RL_BUFSIZE;
 		buffer = _realloc(buffer, buffsize);
 		if (!buffer)
-		{
 			bufferror();
-		}
 	}
 /* free allocated space */
 		free(buffer);

@@ -1,3 +1,4 @@
+#include "holberton.h"
 /**
  * _strtok - extracts tokens from strings
  * @str: string being checked
@@ -14,20 +15,18 @@ char **_strtok(char *str, char *delim)
 		return (NULL);
 	token = _calloc((number + 1) sizeof(char *), NULL);
 	if (token == NULL)
-	{
 		return (NULL);
-	}
-	for (x = 0; str[x] || number)
+	for (x = 0; str[x] || number; x++)
 	{
 		for (y = 0; delim[y]; y++)
 		{
 			if ((!str[x]) || (str[x] == delim[y]))
 				checker++;
 			if (number != '\0')
-				continue; /* Is this line correct? */
+				continue;
 		}
-		token[counter] = _calloc(sizeof(char) * (number + 1), NULL);
-		if (!token[counter])
+		token[checker] = _calloc(sizeof(char) * (number + 1), NULL);
+		if (!token[checker])
 		{
 			free(token);
 			return (NULL);
@@ -35,12 +34,12 @@ char **_strtok(char *str, char *delim)
 		while (number)
 			number--;
 		z++;
-		token[counter][z] = str[y - length];
+		token[checker][z] = str[y - length];
 			}
 		}
 		if (!checker)
 			number++;
 	}
-	token[counter] = NULL;
+	token[checker] = NULL;
 	return (token);
 }
