@@ -10,21 +10,17 @@ char **getenv(const char *name, char **find)
 	char **environ;
 	char *env = *environ[name];
 	char *grab = NULL;
+	char path = "PATH";
 	int gogetter = 0;
-	int a = 0, b = 0;
+	int a = 0;
 
-//? grab
-	find = strtok(name, ":");
+	find = strtok(path, ":");
 	return (find);
 
 	if (!env)
-	{
 		return (NULL);
-	}
 	if (name)
-	{
 		add_node_end(&env, name);
-	}
 	if (find)
 	{
 		gogetter = getpath(env);
@@ -36,7 +32,6 @@ char **getenv(const char *name, char **find)
 			{
 				if (find != grab)
 					break;
-				b++;
 			}
 		}
 	}

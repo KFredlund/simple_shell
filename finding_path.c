@@ -11,7 +11,7 @@ char *getpath(char *path, char **args)
 	char *found = NULL;
 	int iterator = 0;
 
-	path = getenv[iterator];
+	path = getenv(iterator);
 
 	while (path != NULL)
 	{
@@ -21,7 +21,6 @@ char *getpath(char *path, char **args)
 		if (found == 0)
 		{
 			free(args[0]);
-			args[0] = _strcpy(found);
 			free(found);
 		}
 	}
