@@ -1,6 +1,6 @@
 #include "holberton.h"
 int _strcmp(char *s1, char *s2);
-void cont_c_help();
+void cont_c_help(int i) __attribute__((unused));
 int filter(char *token);
 /**
 * main - Entry point, main function
@@ -9,7 +9,7 @@ int filter(char *token);
 */
 int main(void)
 {
-	char *buf, *line, *prompt = "Team Kati^2e Shell$ ";
+	char *buf, *line, *prompt = "$ ";
 	char *token, *ex = "exit\n", *nl = "\n";
 	int input, status = 0;
 	size_t n;
@@ -47,12 +47,12 @@ int main(void)
 }
 /**
  * cont_c_help - Function that exits a program with C^c signal
- *
+ * @i: int var parameter
  * Return: Never
  */
-void cont_c_help()
+void cont_c_help(int i)
 {
-	char *prompt2 = "\nTeam Kati^2e Shell$ ";
+	char *prompt2 = "\n$ ";
 
 	write(1, prompt2, strlen(prompt2) + 1);
 }
