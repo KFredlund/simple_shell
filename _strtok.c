@@ -24,7 +24,7 @@ char **_strtok(char *str, char *delim)
 			if ((!str[x]) || (str[x] == delim[y]))
 				checker++;
 			if (number != '\0')
-			{
+		{
 		token[counter] = _calloc(sizeof(char) * (number + 1), NULL);
 		if (!token[counter])
 		{
