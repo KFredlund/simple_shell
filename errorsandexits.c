@@ -3,7 +3,7 @@
  * bufferror - Message for buffer allocation failure
  * Return: Output message
  */
-int bufferror()
+int bufferror(void)
 {
 	if (!buffer)
 	{
