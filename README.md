@@ -14,7 +14,7 @@
 
 File | Description
 -------|----------------------
-simple\_shell.c | Prints a prompt and waits for user to input a command and arguments, which it reads, parses and then executes. 
+simple\_shell.c | Prints a prompt and waits for user to input a command and arguments, which it reads, parses and then executes.
 
 ##### Helper Functions
 
