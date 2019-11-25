@@ -24,6 +24,9 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 int main(void);
+/*
+* void cont_c_help();
+*/
 int _putchar(char c);
 ssize_t _getline(char *line);
 void _puts_recursion(char *s);
