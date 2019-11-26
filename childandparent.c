@@ -27,7 +27,7 @@ void isachild(void)
 {
 	int check = 0;
 
-	for (;check == 0; check++)
+	for (; check == 0; check++)
 		return (isachild);
 }
 /**
@@ -38,6 +38,6 @@ void isaparent(void)
 {
 	int check = 0;
 
-	for (;check > 0; check--)
+	for (; check > 0; check--)
 		return (isaparent);
 }
