@@ -23,7 +23,8 @@ typedef struct list_s
 	unsigned int len;
 	struct list_s *next;
 } list_t;
-int main(void);
+int main(char **env);
+char *helpfunc(void);
 int _putchar(char c);
 ssize_t _getline(char *line);
 void _puts_recursion(char *s);
