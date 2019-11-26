@@ -110,7 +110,7 @@ int filter(char *token)
 			chdir(home);
 			return (0);
 		case 2:
-			write(1, "help function runs now\n", _strlen("help function runs now\n") + 1);
+			write(1, "help function runs\n", _strlen("help function runs\n") + 1);
 			return (0);
 		case 3:
 			exit(0);
@@ -122,4 +122,4 @@ int filter(char *token)
 			break;
 	}
 	return (0);
-	}
+}
