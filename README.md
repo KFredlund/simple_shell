@@ -4,7 +4,11 @@
 
 ### **Usage**
 ```
- ./shell [command]
+gcc shell.c
+./a.out
+
+$ [command]
+
 ```
 
 ### Flowchart
