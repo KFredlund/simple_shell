@@ -4,22 +4,16 @@ void cont_c_help(int i) __attribute__((unused));
 int filter(char *token);
 /**
 * main - Entry point, main function
+* @env: env variable parameter
 * Return: 0 if success, else 1
 */
 int main(char **env)
 {
-	char *buf, *line, *prompt = "$ ";
-	char *token,/* *ex = "exit\n",*/ *nl = "\n";
+	char *buf = NULL, *line, *prompt = "$ ", **path;
+	char *token, *nl = "\n";
 	int input, status = 0;
 	size_t n = 0;
-	char **path;
 
-	buf = NULL;  // malloc(sizeof(n + 1));
-/*	if (buf == NULL)
-	{
-		perror("Memory allocation fail\n");
-		exit(1);
-	} */
 	while (status < '\n')
 	{
 		signal(SIGINT, cont_c_help);
@@ -32,16 +26,15 @@ int main(char **env)
 		}
 		token = strtok(buf, " ");
 		status = filter(token);
-//		if (filter == 1)
-//		{
-//			path = getpath(env);
-//			childandparent(path, token);
-//		}
+	/*	if (filter == 1) */
+	/*	{ */
+	/*		path = getpath(env); */
+	/*		childandparent(path, token); */
+	/*	} */
 	}
 		status++;
 	free(buf);
 	free(token);
-//	free(*path);
 	return (0);
 }
 /**
@@ -90,33 +83,27 @@ int filter(char *token)
 	builtin_list[3] = "env\n";
 	if (!token)
 		return (1);
-	else
+	for (; i < 4; i++)
 	{
-		for (; i < 4; i++)
-		{
-			if (_strcmp(token, builtin_list[i]) == 0)
-				switch_cmnd = i + 1;	
-		}
-		switch (switch_cmnd)
-		{
-			case 1:
-				printf("chdir switch case\n");
-				chdir(home);
-				return (0);
-
-			case 2:
-				helpfunc;
-				return (0);
-			case 3:
-                        	exit(0);
-
-			case 4:
-				printf("env function\n");
-				return (0);
-			default:
-				perror("Command Not Found");
-				break;
-		}
+		if (_strcmp(token, builtin_list[i]) == 0)
+			switch_cmnd = i + 1;
+	}
+	switch (switch_cmnd)
+	{
+		case 1:
+			chdir(home);
+			return (0);
+		case 2:
+			write(1, "help function runs now", _strlen("help function runs now") + 1);
+			return (0);
+		case 3:
+			exit(0);
+		case 4:
+			write(1, "env function", _strlen("env function") + 1);
+			return (0);
+		default:
+			perror("Command Not Found");
+			break;
+	}
 	return (0);
 	}
-}
