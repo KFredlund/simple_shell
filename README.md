@@ -10,6 +10,9 @@ gcc shell.c
 $ [command]
 
 ```
+### Description
+
+ The  simple_shell program is a UNIX command line interpreter that will display a prompt and waits for the user to input a command, which will always end  with  a new  line.   The prompt will be displayed each time a command has been executed, though if an executable is not found, an error message will be displayed  before the prompt reappears.
 
 ### Flowchart
 ![flowchart image](https://i.imgur.com/39E2oKs.jpg)
