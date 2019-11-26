@@ -3,27 +3,12 @@
 .SS UNIX Command Line Interpreter
 .NM Team Kati^2e simple_shell for HolbertonNHV
 .SH SYNOPSIS
-.B Usage: simple_shell
-.B [command] [argument[1]] [argument[2]]...
+.B Usage: ./shell.c
+.B [command]
 .PP
 .SH DESCRIPTION
 The simple_shell program is a UNIX command line interpreter that will display a prompt and waits for the user to input a command, which will always end with a new line.
 The prompt will be displayed each time a command has been executed, though if an executable is not found, an error message will be displayed before the prompt reappears.
-.PP
-.SH OPTIONS
-The shell can be paired with the following options:
-.SS -c string
-Commands are read from string.
-.SS -i
-Act as if shell had been invoked as a login shell
-.SS -r
-The shell becomes restricted
-.SS -s
-Commands are read from the standard input
-.SS -D
-Printed list of double-quoted strings followed by $
-.SS --
-A -- signals the end of options
 .PP
 .SH ARGUMENTS
 If no option is supplied, the shell reads and executes, then exits
@@ -33,12 +18,10 @@ A login shell is where the first character of argument zero is a - or 1 started 
 An interactive shell is started without non option arguments
 .PP
 .SH EXAMPLE
-.SH ls:
-ls -> lists all files/directories in CWD
-.SH pwd:
-pwd -> prints name of current working directory
 .SH cd:
-cd -> brings user to $HOME
+cd -> Changes current directory to $HOME
+.SH help:
+help -> Help function runs here
 .SH env:
 env -> shows environment
 .SH exit:
@@ -75,21 +58,6 @@ A coprocess is executed asynchronously in a subshell as if the command had been 
 An object called like a simple command and executes a command with new positional parameters.
 .SS		function - defines name
 .SS		Compound Commands - commands called on by name
-.PP
-.SH COMMENTS
-When a # is used, all remaining characters on that line are ignored. An interactive shell without interactive_comments does not allow comments without option enabled.
-.PP
-.SH QUOTING
-This is used to remove special meaning of certain special characters to the shell. There are three quoting options:
-.SS - a non quoted backslash (\\)
-.SS - single quotes to preserve literal value
-.SS - double quotes to preserve literal value except $, `, \\, and !.
-.PP
-.SH PARAMETERS
-An entity that stores values such as a name, number or one of the special characters listed under SPECIAL PARAMETERS. A variable is a parameter denoted by a name.
-.PP
-.SH	POSITIONAL PARAMETERS
-A positional parameter is denoted by one or more digits other than 0. They are assigned form shell's arguments and may be reassigned using the set command.
 .PP
 .SH	SPECIAL PARAMETERS
 These can only be referenced, not assigned.
@@ -283,6 +251,17 @@ Most shell commands can work across various types of shells. For a complete list
 .SS ulimit - provides control over processes started and resources available to the shell
 .SS umask - user file-creation mask is set to to mode and is interpreted as a symbolic mode mask. If this begins with digit, it is seen as octal number.
 .SS wait - waits for each specified process and returns its termination status
+.PP
+.SH EXAMPLES
+$ cd
+.PP
+$ help
+.PP
+help function runs
+.PP
+$ exit
+.PP
+Process terminated
 .PP
 .SH SEE ALSO
 .B sh(1)
