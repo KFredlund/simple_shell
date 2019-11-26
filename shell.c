@@ -2,6 +2,7 @@
 int _strcmp(char *s1, char *s2);
 void cont_c_help(int i) __attribute__((unused));
 int filter(char *token);
+int _strlen(char *s);
 /**
 * main - Entry point, main function
 * @env: env variable parameter
@@ -36,6 +37,21 @@ int main(char **env)
 	free(buf);
 	free(token);
 	return (0);
+}
+/**
+* _strlen - return length of string
+* @s: string being measured
+* Return: length of string
+*/
+int _strlen(char *s)
+{
+	int t = 0;
+
+	while (s[t] != '\0')
+	{
+		t += 1;
+	}
+	return (t);
 }
 /**
  * cont_c_help - Function that exits a program with C^c signal
@@ -94,12 +110,12 @@ int filter(char *token)
 			chdir(home);
 			return (0);
 		case 2:
-			write(1, "help function runs now", _strlen("help function runs now") + 1);
+			write(1, "help function runs now\n", _strlen("help function runs now\n") + 1);
 			return (0);
 		case 3:
 			exit(0);
 		case 4:
-			write(1, "env function", _strlen("env function") + 1);
+			write(1, "env function\n", _strlen("env function\n") + 1);
 			return (0);
 		default:
 			perror("Command Not Found");
