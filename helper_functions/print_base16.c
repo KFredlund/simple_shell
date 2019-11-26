@@ -8,6 +8,7 @@ int print_base16(void)
 {
 	int i;
 	int j;
+
 	for (i = '0'; i <= '9'; i++)
 	{
 		putchar(i);
