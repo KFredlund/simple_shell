@@ -4,7 +4,7 @@
 
 ### **Usage**
 ```
- simple_shell [command] [argv[1]] [argv[2]]...
+ ./shell [command]
 ```
 
 ### Flowchart
@@ -79,11 +79,11 @@ Simple\_shell will return the number of bytes read from standard inpout
 
 #### Examples
 ```
-$ cd		Output: Moved to $HOME
+$ cd		Output: Directory changes to home
 
-$ pwd		Output: Name of current working directory
+$ help		Output: Help function runs here
 
-$ exit		Output: root@ubuntu:/home/
+$ exit		Output: Process exited
 ```
 
 #### Authors
